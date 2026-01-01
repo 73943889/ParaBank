@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Reto Tecnico ParaBank" verbose="1">
+    <test name="Pruebas de Registro UI (Selenium)">
+        <classes>
+            <class name="runner.TestRunner" />
+        </classes>
+    </test>
+    <test name="Pruebas de API (Karate)">
+        <classes>
+            <class name="runner.KarateRunner" />
+        </classes>
+    </test>
+</suite>
