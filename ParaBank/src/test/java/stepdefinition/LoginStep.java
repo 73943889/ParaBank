@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -48,7 +49,6 @@ public class LoginStep {
         loginPage = new LoginPage(driver);
         loginPage.launchApp("https://parabank.parasoft.com/parabank/index.htm");
         registerPage = loginPage.clickRegister();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         registerPage.registerUser(sharedUser, sharedPass);
         ConfigHandler.setTestData(sharedUser,sharedPass);
         registerPage.logOut();
@@ -56,8 +56,8 @@ public class LoginStep {
 
     @When("inicia sesion con los datos generados")
     public void iniciarSesion() {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
         loginPage.login(sharedUser, sharedPass);
     }
 
